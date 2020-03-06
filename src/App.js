@@ -1,24 +1,48 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Route } from 'react-router-dom';
 import './App.css';
+import NavigationBar from './components/NavigationBar';
+import FormikMaterialSignIn from './components/Forms/FormikMaterialSignIn';
+import FormikRegistrationForm from './components/Forms/FormikRegistrationForm';
+import FormikContactForm from './components/Forms/FormikContactForm';
+import Strains from './components/Strains/Strains';
+import FormikRecommendationsPage from './components/FormikRecomendationsPage';
+import IndividualStrainPage from './components/IndividualStrainPage';
+import StrainDetails from './components/Strains/StrainDetails';
+
+
+
+
+
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Route path='/'>
+        <NavigationBar />
+      </Route>
+      <Route exact path ='/'>
+        <FormikMaterialSignIn />
+      </Route>
+      <Route path='/register'>
+        <FormikRegistrationForm />
+      </Route>
+      <Route path='/contact'>
+        <FormikContactForm />
+      </Route>
+      <Route exact path='/strains'>
+        <Strains />
+        <FormikRecommendationsPage />
+      </Route>
+      <Route  exact path='/strains/:id'>
+        <IndividualStrainPage />
+      </Route>
+      <Route path='/database'>
+        <StrainDetails />
+      </Route>
+     
+     
     </div>
   );
 }
